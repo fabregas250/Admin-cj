@@ -8,11 +8,18 @@ import Devices from './pages/Devices'
 import ActivityLogs from './pages/ActivityLogs'
 import Notifications from './pages/Notifications'
 import Accounts from './pages/Accounts'
+import Transactions from './pages/Transactions'
+import LoginAudits from './pages/LoginAudits'
 import DashboardLayout from './components/layout/DashboardLayout'
 
 function PrivateRoute({ children }) {
   const { isAuthenticated } = useAuthStore()
-  return isAuthenticated ? children : <Navigate to="/login" replace />
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />
+  }
+  
+  return <>{children}</>
 }
 
 function App() {
@@ -86,6 +93,26 @@ function App() {
             <PrivateRoute>
               <DashboardLayout>
                 <Accounts />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transactions"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Transactions />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/login-audits"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <LoginAudits />
               </DashboardLayout>
             </PrivateRoute>
           }

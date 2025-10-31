@@ -10,6 +10,8 @@ import {
   LogOut,
   Menu,
   X,
+  CreditCard,
+  Shield,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -18,6 +20,8 @@ const menuItems = [
   { path: '/users', label: 'Users', icon: Users },
   { path: '/devices', label: 'Devices', icon: Smartphone },
   { path: '/accounts', label: 'Accounts', icon: Wallet },
+  { path: '/transactions', label: 'Transactions', icon: CreditCard },
+  { path: '/login-audits', label: 'Login Audits', icon: Shield },
   { path: '/notifications', label: 'Notifications', icon: Bell },
   { path: '/activity-logs', label: 'Activity Logs', icon: FileText },
 ]
@@ -31,6 +35,11 @@ export default function DashboardLayout({ children }) {
   const handleLogout = () => {
     logout()
     navigate('/login')
+  }
+
+  // Ensure children is a valid React element
+  if (!children) {
+    return null
   }
 
   return (

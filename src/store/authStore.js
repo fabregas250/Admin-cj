@@ -79,4 +79,5 @@ const useAuthStore = create((set) => ({
   },
 }))
 
+export { useAuthStore }
 export default useAuthStore

@@ -7,6 +7,13 @@ export default defineConfig({
   server: {
     port: 5174,
     open: true
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+    force: true
+  },
+  resolve: {
+    dedupe: ['react', 'react-dom']
   }
 })
 
